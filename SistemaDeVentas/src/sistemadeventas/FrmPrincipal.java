@@ -26,19 +26,310 @@ public class FrmPrincipal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelSuperior = new javax.swing.JPanel();
+        lblTextoUsuarioActivo = new javax.swing.JLabel();
+        lblUsuarioActivo = new javax.swing.JLabel();
+        lblTextoRolUsuario = new javax.swing.JLabel();
+        lblRolUsuario = new javax.swing.JLabel();
+        btnCerrarSesion = new javax.swing.JButton();
+        lblTituloSistema = new javax.swing.JLabel();
+        panelClientes = new javax.swing.JTabbedPane();
+        panelVentas = new javax.swing.JPanel();
+        panelCaja = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        panelMinimarket = new javax.swing.JPanel();
+        panelLibreria = new javax.swing.JPanel();
+        panelUsuarios = new javax.swing.JPanel();
+        lblTituloUsuarios = new javax.swing.JLabel();
+        lblIdUsuario = new javax.swing.JLabel();
+        txtIdUsuario = new javax.swing.JTextField();
+        lblNombresUsuario = new javax.swing.JLabel();
+        txtNombresUsuario = new javax.swing.JTextField();
+        lblUsuarioRegistro = new javax.swing.JLabel();
+        txtUsuarioRegistro = new javax.swing.JTextField();
+        lblContraseniaUsuario = new javax.swing.JLabel();
+        txtContraseniaUsuario = new javax.swing.JTextField();
+        lblRolUsuarioRegistro = new javax.swing.JLabel();
+        cmbRolUsuario = new javax.swing.JComboBox<>();
+        btnGuardarUsuario = new javax.swing.JButton();
+        panelReportes = new javax.swing.JPanel();
+
+        lblTextoUsuarioActivo.setText("Usuario activo:");
+
+        lblUsuarioActivo.setText("---");
+
+        lblTextoRolUsuario.setText("Rol:");
+
+        lblRolUsuario.setText("---");
+
+        btnCerrarSesion.setText("Cerrar sesión");
+
+        javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
+        panelSuperior.setLayout(panelSuperiorLayout);
+        panelSuperiorLayout.setHorizontalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblTextoUsuarioActivo)
+                        .addComponent(btnCerrarSesion))
+                    .addGroup(panelSuperiorLayout.createSequentialGroup()
+                        .addGroup(panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRolUsuario)
+                            .addComponent(lblTextoRolUsuario)
+                            .addComponent(lblUsuarioActivo))
+                        .addGap(70, 70, 70))))
+        );
+        panelSuperiorLayout.setVerticalGroup(
+            panelSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSuperiorLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(lblTextoUsuarioActivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuarioActivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTextoRolUsuario)
+                .addGap(5, 5, 5)
+                .addComponent(lblRolUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCerrarSesion)
+                .addContainerGap())
+        );
+
+        lblTituloSistema.setText("Sistema Minimarket y Librería");
+
+        javax.swing.GroupLayout panelVentasLayout = new javax.swing.GroupLayout(panelVentas);
+        panelVentas.setLayout(panelVentasLayout);
+        panelVentasLayout.setHorizontalGroup(
+            panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        panelVentasLayout.setVerticalGroup(
+            panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Ventas", panelVentas);
+
+        javax.swing.GroupLayout panelCajaLayout = new javax.swing.GroupLayout(panelCaja);
+        panelCaja.setLayout(panelCajaLayout);
+        panelCajaLayout.setHorizontalGroup(
+            panelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        panelCajaLayout.setVerticalGroup(
+            panelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Caja", panelCaja);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Clientes", jPanel3);
+
+        javax.swing.GroupLayout panelMinimarketLayout = new javax.swing.GroupLayout(panelMinimarket);
+        panelMinimarket.setLayout(panelMinimarketLayout);
+        panelMinimarketLayout.setHorizontalGroup(
+            panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        panelMinimarketLayout.setVerticalGroup(
+            panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Minimarket", panelMinimarket);
+
+        javax.swing.GroupLayout panelLibreriaLayout = new javax.swing.GroupLayout(panelLibreria);
+        panelLibreria.setLayout(panelLibreriaLayout);
+        panelLibreriaLayout.setHorizontalGroup(
+            panelLibreriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        panelLibreriaLayout.setVerticalGroup(
+            panelLibreriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Librería", panelLibreria);
+
+        lblTituloUsuarios.setText("Gestión de usuarios");
+
+        lblIdUsuario.setText("ID usuario:");
+
+        txtIdUsuario.addActionListener(this::txtIdUsuarioActionPerformed);
+
+        lblNombresUsuario.setText("Nombres:");
+
+        txtNombresUsuario.addActionListener(this::txtNombresUsuarioActionPerformed);
+
+        lblUsuarioRegistro.setText("Usuario:");
+
+        lblContraseniaUsuario.setText("Contraseña:");
+
+        lblRolUsuarioRegistro.setText("Rol:");
+
+        cmbRolUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cajero" }));
+        cmbRolUsuario.addActionListener(this::cmbRolUsuarioActionPerformed);
+
+        btnGuardarUsuario.setText("Guardar");
+
+        javax.swing.GroupLayout panelUsuariosLayout = new javax.swing.GroupLayout(panelUsuarios);
+        panelUsuarios.setLayout(panelUsuariosLayout);
+        panelUsuariosLayout.setHorizontalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(lblRolUsuarioRegistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbRolUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(lblContraseniaUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtContraseniaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(lblUsuarioRegistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUsuarioRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addComponent(lblNombresUsuario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNombresUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelUsuariosLayout.createSequentialGroup()
+                        .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnGuardarUsuario)
+                            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                                .addComponent(lblTituloUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblIdUsuario)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
+        );
+        panelUsuariosLayout.setVerticalGroup(
+            panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTituloUsuarios)
+                    .addComponent(lblIdUsuario)
+                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNombresUsuario)
+                    .addComponent(txtNombresUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsuarioRegistro)
+                    .addComponent(txtUsuarioRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContraseniaUsuario)
+                    .addComponent(txtContraseniaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRolUsuarioRegistro)
+                    .addComponent(cmbRolUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnGuardarUsuario)
+                .addGap(68, 68, 68))
+        );
+
+        panelClientes.addTab("Usuarios", panelUsuarios);
+
+        javax.swing.GroupLayout panelReportesLayout = new javax.swing.GroupLayout(panelReportes);
+        panelReportes.setLayout(panelReportesLayout);
+        panelReportesLayout.setHorizontalGroup(
+            panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+        panelReportesLayout.setVerticalGroup(
+            panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 299, Short.MAX_VALUE)
+        );
+
+        panelClientes.addTab("Reportes", panelReportes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTituloSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 311, Short.MAX_VALUE)
+                .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblTituloSistema)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdUsuarioActionPerformed
+
+    private void txtNombresUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresUsuarioActionPerformed
+
+    private void cmbRolUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRolUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRolUsuarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnGuardarUsuario;
+    private javax.swing.JComboBox<String> cmbRolUsuario;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblContraseniaUsuario;
+    private javax.swing.JLabel lblIdUsuario;
+    private javax.swing.JLabel lblNombresUsuario;
+    private javax.swing.JLabel lblRolUsuario;
+    private javax.swing.JLabel lblRolUsuarioRegistro;
+    private javax.swing.JLabel lblTextoRolUsuario;
+    private javax.swing.JLabel lblTextoUsuarioActivo;
+    private javax.swing.JLabel lblTituloSistema;
+    private javax.swing.JLabel lblTituloUsuarios;
+    private javax.swing.JLabel lblUsuarioActivo;
+    private javax.swing.JLabel lblUsuarioRegistro;
+    private javax.swing.JPanel panelCaja;
+    private javax.swing.JTabbedPane panelClientes;
+    private javax.swing.JPanel panelLibreria;
+    private javax.swing.JPanel panelMinimarket;
+    private javax.swing.JPanel panelReportes;
+    private javax.swing.JPanel panelSuperior;
+    private javax.swing.JPanel panelUsuarios;
+    private javax.swing.JPanel panelVentas;
+    private javax.swing.JTextField txtContraseniaUsuario;
+    private javax.swing.JTextField txtIdUsuario;
+    private javax.swing.JTextField txtNombresUsuario;
+    private javax.swing.JTextField txtUsuarioRegistro;
     // End of variables declaration//GEN-END:variables
 }
