@@ -4,17 +4,21 @@
  */
 package sistemadeventas;
 
-/**
- *
- * @author ASUS
- */
 public class SistemaDeVentas {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+                javax.swing.JFrame ventana = new javax.swing.JFrame("Sistema Minimarket y Librería");
+
+                ventana.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+                ventana.setContentPane(new FrmLogin());
+                ventana.pack();
+                ventana.setLocationRelativeTo(null);
+                ventana.setVisible(true);
+            }
+        });
     }
-    
 }

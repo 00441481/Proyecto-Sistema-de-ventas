@@ -13,10 +13,77 @@ public class FrmPrincipal extends javax.swing.JPanel {
     /**
      * Creates new form FrmPrincipal
      */
-    public FrmPrincipal() {
-        initComponents();
+   public FrmPrincipal() {
+       
+    initComponents();
+
+    mostrarUsuarioActivo();
+    limpiarCamposLibreria();
+    actualizarTablaLibreria();
+}
+   
+private void mostrarUsuarioActivo() {
+
+    if (SistemaDatos.usuarioActivo != null) {
+        lblUsuarioActivo.setText(SistemaDatos.usuarioActivo.getNombres());
+        lblRolUsuario.setText(SistemaDatos.usuarioActivo.getRol());
+    }
+}
+
+private void limpiarCamposLibreria() {
+
+    txtCodigoLibreria.setText("");
+    txtNombreLibreria.setText("");
+    txtCategoriaLibreria.setText("");
+    txtPrecioLibreria.setText("");
+    txtStockLibreria.setText("");
+    txtMarcaLibreria.setText("");
+    txtCampaniaEscolar.setText("");
+
+    chkCampaniaEscolar.setSelected(false);
+
+    if (cmbTipoArticulo.getItemCount() > 0) {
+        cmbTipoArticulo.setSelectedIndex(0);
     }
 
+    txtCodigoLibreria.requestFocus();
+}
+
+private void actualizarTablaLibreria() {
+
+    javax.swing.table.DefaultTableModel modelo =
+            (javax.swing.table.DefaultTableModel) tblLibreria.getModel();
+
+    modelo.setRowCount(0);
+
+    for (ProductoLibreria p : SistemaDatos.productoControlador.obtenerProductosLibreria()) {
+
+        modelo.addRow(new Object[]{
+            p.getCodigo(),
+            p.getNombre(),
+            p.getCategoria(),
+            p.getPrecio(),
+            p.getStock(),
+            p.getTipoArticulo(),
+            p.getMarca(),
+            p.getCampaniaEscolar()
+        });
+    }
+}
+
+private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
+
+    txtCodigoLibreria.setText(p.getCodigo());
+    txtNombreLibreria.setText(p.getNombre());
+    txtCategoriaLibreria.setText(p.getCategoria());
+    txtPrecioLibreria.setText(String.valueOf(p.getPrecio()));
+    txtStockLibreria.setText(String.valueOf(p.getStock()));
+    cmbTipoArticulo.setSelectedItem(p.getTipoArticulo());
+    txtMarcaLibreria.setText(p.getMarca());
+    txtCampaniaEscolar.setText(p.getCampaniaEscolar());
+
+    chkCampaniaEscolar.setSelected(p.esCampaniaEscolar());
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -570,7 +637,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
 
         btnEliminarLibreria.setText("Eliminar");
 
-        btnBuscarLibreria.setText("jButton1");
+        btnBuscarLibreria.setText("Buscar");
 
         btnFiltrarTipo.setText("Filtrar tipo");
 

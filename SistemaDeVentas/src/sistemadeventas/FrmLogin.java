@@ -55,14 +55,15 @@ public class FrmLogin extends javax.swing.JPanel {
 
         lblTituloLogin1.setText("Iniciar sesión");
 
-        txtUsuario.setText("......................");
+        txtUsuario.setText("----");
         txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
 
         lblContrasenia.setText("Contraseña:");
 
-        txtContrasenia.setText("jPasswordField1");
+        txtContrasenia.setText("----");
 
         btnIniciarSesion.setText("Acceder");
+        btnIniciarSesion.addActionListener(this::btnIniciarSesionActionPerformed);
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(this::btnSalirActionPerformed);
@@ -79,22 +80,25 @@ public class FrmLogin extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTituloLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblTituloLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnIniciarSesion)
-                                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalir)
-                            .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(256, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnIniciarSesion)
+                                        .addGap(22, 22, 22)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnSalir)
+                                            .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtContrasenia)
+                                        .addGap(67, 67, 67)))))))
+                .addContainerGap(273, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,6 +132,42 @@ public class FrmLogin extends javax.swing.JPanel {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+       String usuario = txtUsuario.getText().trim();
+    String contrasenia = String.valueOf(txtContrasenia.getPassword()).trim();
+
+    if (usuario.isEmpty() || contrasenia.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Ingrese usuario y contraseña.");
+        return;
+    }
+
+    Usuario usuarioEncontrado = SistemaDatos.usuarioControlador.login(usuario, contrasenia);
+
+    if (usuarioEncontrado == null) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
+        return;
+    }
+
+    SistemaDatos.usuarioActivo = usuarioEncontrado;
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Bienvenido: " + usuarioEncontrado.getNombres());
+
+    javax.swing.JFrame ventanaPrincipal = new javax.swing.JFrame("Sistema de Ventas");
+
+    ventanaPrincipal.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+    ventanaPrincipal.setContentPane(new FrmPrincipal());
+    ventanaPrincipal.pack();
+    ventanaPrincipal.setLocationRelativeTo(null);
+    ventanaPrincipal.setVisible(true);
+
+    java.awt.Window ventanaLogin = javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    if (ventanaLogin != null) {
+        ventanaLogin.dispose();
+    }
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
