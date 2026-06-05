@@ -119,12 +119,9 @@ public class UsuarioControlador {
         return false;
     }
 
-    public void listarUsuarios() {
-
-        for (Usuario u : listaUsuarios) {
-            u.verDatos();
-        }
-    }
+   public ArrayList<Usuario> listarUsuarios() {
+    return listaUsuarios;
+}
 
     public ArrayList<Usuario> getListaUsuarios() {
         return listaUsuarios;
@@ -133,4 +130,5 @@ public class UsuarioControlador {
     public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
+    
 }

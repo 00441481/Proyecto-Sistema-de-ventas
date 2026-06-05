@@ -13,13 +13,19 @@ public class FrmPrincipal extends javax.swing.JPanel {
     /**
      * Creates new form FrmPrincipal
      */
-   public FrmPrincipal() {
-       
+public FrmPrincipal() {
     initComponents();
 
     mostrarUsuarioActivo();
+
     limpiarCamposLibreria();
     actualizarTablaLibreria();
+
+    limpiarCamposAbarrote();
+    actualizarTablaAbarrotes();
+
+    limpiarCamposUsuario();
+    actualizarTablaUsuarios();
 }
    
 private void mostrarUsuarioActivo() {
@@ -83,6 +89,97 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
     txtCampaniaEscolar.setText(p.getCampaniaEscolar());
 
     chkCampaniaEscolar.setSelected(p.esCampaniaEscolar());
+}
+private void limpiarCamposAbarrote() {
+
+    txtCodigoAbarrote.setText("");
+    txtNombreAbarrote.setText("");
+    txtCategoriaAbarrote.setText("");
+    txtPrecioAbarrote.setText("");
+    txtStockAbarrote.setText("");
+    txtFechaVencimiento.setText("");
+    txtMarcaAbarrote.setText("");
+
+    if (cmbUnidadMedida.getItemCount() > 0) {
+        cmbUnidadMedida.setSelectedIndex(0);
+    }
+
+    txtCodigoAbarrote.requestFocus();
+}
+
+private void actualizarTablaAbarrotes() {
+
+    javax.swing.table.DefaultTableModel modelo =
+            (javax.swing.table.DefaultTableModel) tblAbarrotes.getModel();
+
+    modelo.setRowCount(0);
+
+    for (ProductoAbarrote p : SistemaDatos.productoControlador.obtenerAbarrotes()) {
+
+        modelo.addRow(new Object[]{
+            p.getCodigo(),
+            p.getNombre(),
+            p.getCategoria(),
+            p.getPrecio(),
+            p.getStock(),
+            p.getFechaVencimiento(),
+            p.getMarca(),
+            p.getUnidadMedida()
+        });
+    }
+}
+
+private void cargarAbarroteEnFormulario(ProductoAbarrote p) {
+
+    txtCodigoAbarrote.setText(p.getCodigo());
+    txtNombreAbarrote.setText(p.getNombre());
+    txtCategoriaAbarrote.setText(p.getCategoria());
+    txtPrecioAbarrote.setText(String.valueOf(p.getPrecio()));
+    txtStockAbarrote.setText(String.valueOf(p.getStock()));
+    txtFechaVencimiento.setText(p.getFechaVencimiento());
+    txtMarcaAbarrote.setText(p.getMarca());
+    cmbUnidadMedida.setSelectedItem(p.getUnidadMedida());
+}
+private void limpiarCamposUsuario() {
+
+    txtIdUsuario.setText("");
+    txtNombresUsuario.setText("");
+    txtUsuarioRegistro.setText("");
+    txtContraseniaUsuario.setText("");
+
+    if (cmbRolUsuario.getItemCount() > 0) {
+        cmbRolUsuario.setSelectedIndex(0);
+    }
+
+    txtIdUsuario.requestFocus();
+}
+
+private void actualizarTablaUsuarios() {
+
+    javax.swing.table.DefaultTableModel modelo =
+            (javax.swing.table.DefaultTableModel) tblUsuarios.getModel();
+
+    modelo.setRowCount(0);
+
+    for (Usuario u : SistemaDatos.usuarioControlador.listarUsuarios()) {
+
+        modelo.addRow(new Object[]{
+            u.getIdUsuario(),
+            u.getNombres(),
+            u.getUsuario(),
+            u.getRol(),
+            u.estadoTexto()
+        });
+    }
+}
+
+private void cargarUsuarioEnFormulario(Usuario u) {
+
+    txtIdUsuario.setText(u.getIdUsuario());
+    txtNombresUsuario.setText(u.getNombres());
+    txtUsuarioRegistro.setText(u.getUsuario());
+    txtContraseniaUsuario.setText(u.getContrasenia());
+    cmbRolUsuario.setSelectedItem(u.getRol());
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -265,6 +362,7 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
         lblRolUsuario.setText("---");
 
         btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
 
         javax.swing.GroupLayout panelSuperiorLayout = new javax.swing.GroupLayout(panelSuperior);
         panelSuperior.setLayout(panelSuperiorLayout);
@@ -632,6 +730,7 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
         chkCampaniaEscolar.setText("Campaña escolar");
 
         btnGuardarLibreria.setText("Guardar");
+        btnGuardarLibreria.addActionListener(this::btnGuardarLibreriaActionPerformed);
 
         btnModificarLibreria.setText("Modificar");
 
@@ -782,14 +881,19 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
         cmbRolUsuario.addActionListener(this::cmbRolUsuarioActionPerformed);
 
         btnGuardarUsuario.setText("Guardar");
+        btnGuardarUsuario.addActionListener(this::btnGuardarUsuarioActionPerformed);
 
         btnModificarUsuario.setText("Modificar");
+        btnModificarUsuario.addActionListener(this::btnModificarUsuarioActionPerformed);
 
         btnDarBajaUsuario.setText("Dar de baja");
+        btnDarBajaUsuario.addActionListener(this::btnDarBajaUsuarioActionPerformed);
 
         btnBuscarUsuario.setText("Buscar");
+        btnBuscarUsuario.addActionListener(this::btnBuscarUsuarioActionPerformed);
 
         btnLimpiarUsuario.setText("Limpiar");
+        btnLimpiarUsuario.addActionListener(this::btnLimpiarUsuarioActionPerformed);
 
         tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -924,14 +1028,19 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
         btnGuardarAbarrote.addActionListener(this::btnGuardarAbarroteActionPerformed);
 
         btnModificarAbarrote.setText("Modificar");
+        btnModificarAbarrote.addActionListener(this::btnModificarAbarroteActionPerformed);
 
         btnEliminarAbarrote.setText("Eliminar");
+        btnEliminarAbarrote.addActionListener(this::btnEliminarAbarroteActionPerformed);
 
         btnBuscarAbarrote.setText("Buscar");
+        btnBuscarAbarrote.addActionListener(this::btnBuscarAbarroteActionPerformed);
 
         btnStockBajo.setText("Stock bajo");
+        btnStockBajo.addActionListener(this::btnStockBajoActionPerformed);
 
         btnVerVencidos.setText("Ver vencidos");
+        btnVerVencidos.addActionListener(this::btnVerVencidosActionPerformed);
 
         btnLimpiarAbarrote.setText("Limpiar");
 
@@ -1325,7 +1434,7 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                         .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
         );
@@ -1356,8 +1465,535 @@ private void cargarProductoLibreriaEnFormulario(ProductoLibreria p) {
     }//GEN-LAST:event_cmbRolUsuarioActionPerformed
 
     private void btnGuardarAbarroteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAbarroteActionPerformed
-        // TODO add your handling code here:
+String codigo = txtCodigoAbarrote.getText().trim();
+String nombre = txtNombreAbarrote.getText().trim();
+String categoria = txtCategoriaAbarrote.getText().trim();
+String precioTexto = txtPrecioAbarrote.getText().trim();
+String stockTexto = txtStockAbarrote.getText().trim();
+String fechaVencimiento = txtFechaVencimiento.getText().trim();
+String marca = txtMarcaAbarrote.getText().trim();
+String unidadMedida = cmbUnidadMedida.getSelectedItem().toString();
+
+if (codigo.isEmpty() || nombre.isEmpty() || categoria.isEmpty()
+        || precioTexto.isEmpty() || stockTexto.isEmpty()
+        || fechaVencimiento.isEmpty() || marca.isEmpty()) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Complete los datos del producto de minimarket.");
+    return;
+}
+
+try {
+
+    double precio = Double.parseDouble(precioTexto);
+    int stock = Integer.parseInt(stockTexto);
+
+    if (precio <= 0 || stock < 0) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El precio debe ser mayor a 0 y el stock no puede ser negativo.");
+        return;
+    }
+
+    try {
+        java.time.LocalDate.parse(fechaVencimiento);
+    } catch (java.time.format.DateTimeParseException e) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "La fecha debe tener este formato: 2026-06-05");
+        return;
+    }
+
+    ProductoAbarrote producto = new ProductoAbarrote(
+            codigo,
+            nombre,
+            categoria,
+            precio,
+            stock,
+            fechaVencimiento,
+            marca,
+            unidadMedida
+    );
+
+    boolean registrado = SistemaDatos.productoControlador.agregarProducto(producto);
+
+    if (registrado) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Producto de minimarket registrado correctamente.");
+
+        actualizarTablaAbarrotes();
+        limpiarCamposAbarrote();
+        SistemaDatos.guardarDatos();
+
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Ya existe un producto con ese código.");
+    }
+
+} catch (NumberFormatException e) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese precio y stock con valores numéricos.");
+}        // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarAbarroteActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+int opcion = javax.swing.JOptionPane.showConfirmDialog(this,
+        "¿Desea cerrar sesión?",
+        "Cerrar sesión",
+        javax.swing.JOptionPane.YES_NO_OPTION);
+
+if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+
+    SistemaDatos.guardarDatos();
+    SistemaDatos.cerrarSesion();
+
+    javax.swing.JFrame ventanaLogin = new javax.swing.JFrame("Sistema Minimarket y Librería");
+
+    ventanaLogin.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+    ventanaLogin.setContentPane(new FrmLogin());
+    ventanaLogin.pack();
+    ventanaLogin.setLocationRelativeTo(null);
+    ventanaLogin.setVisible(true);
+
+    java.awt.Window ventanaActual = javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    if (ventanaActual != null) {
+        ventanaActual.dispose();
+    }
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnGuardarLibreriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarLibreriaActionPerformed
+String codigo = txtCodigoLibreria.getText().trim();
+String nombre = txtNombreLibreria.getText().trim();
+String categoria = txtCategoriaLibreria.getText().trim();
+String precioTexto = txtPrecioLibreria.getText().trim();
+String stockTexto = txtStockLibreria.getText().trim();
+String tipoArticulo = cmbTipoArticulo.getSelectedItem().toString();
+String marca = txtMarcaLibreria.getText().trim();
+String campania = txtCampaniaEscolar.getText().trim();
+
+if (codigo.isEmpty() || nombre.isEmpty() || categoria.isEmpty()
+        || precioTexto.isEmpty() || stockTexto.isEmpty() || marca.isEmpty()) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Complete los datos del producto de librería.");
+    return;
+}
+
+try {
+
+    double precio = Double.parseDouble(precioTexto);
+    int stock = Integer.parseInt(stockTexto);
+
+    if (precio <= 0 || stock < 0) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El precio debe ser mayor a 0 y el stock no puede ser negativo.");
+        return;
+    }
+
+    if (chkCampaniaEscolar.isSelected() && campania.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Ingrese el nombre de la campaña escolar.");
+        return;
+    }
+
+    if (!chkCampaniaEscolar.isSelected()) {
+        campania = "";
+    }
+
+    ProductoLibreria producto = new ProductoLibreria(
+            codigo,
+            nombre,
+            categoria,
+            precio,
+            stock,
+            tipoArticulo,
+            marca,
+            campania
+    );
+
+    boolean registrado = SistemaDatos.productoControlador.agregarProducto(producto);
+
+    if (registrado) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Producto de librería registrado correctamente.");
+
+        actualizarTablaLibreria();
+        limpiarCamposLibreria();
+        SistemaDatos.guardarDatos();
+
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Ya existe un producto con ese código.");
+    }
+
+} catch (NumberFormatException e) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese precio y stock con valores numéricos.");
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarLibreriaActionPerformed
+
+    private void btnBuscarAbarroteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAbarroteActionPerformed
+String codigo = txtCodigoAbarrote.getText().trim();
+
+if (codigo.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese el código del producto.");
+    return;
+}
+
+Producto producto = SistemaDatos.productoControlador.buscarPorCodigo(codigo);
+
+if (producto == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró un producto con ese código.");
+    return;
+}
+
+if (!(producto instanceof ProductoAbarrote)) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "El código pertenece a un producto de Librería, no de Minimarket.");
+    return;
+}
+
+ProductoAbarrote abarrote = (ProductoAbarrote) producto;
+
+cargarAbarroteEnFormulario(abarrote);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarAbarroteActionPerformed
+
+    private void btnModificarAbarroteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarAbarroteActionPerformed
+String codigo = txtCodigoAbarrote.getText().trim();
+String nombre = txtNombreAbarrote.getText().trim();
+String categoria = txtCategoriaAbarrote.getText().trim();
+String precioTexto = txtPrecioAbarrote.getText().trim();
+String stockTexto = txtStockAbarrote.getText().trim();
+String fechaVencimiento = txtFechaVencimiento.getText().trim();
+String marca = txtMarcaAbarrote.getText().trim();
+String unidadMedida = cmbUnidadMedida.getSelectedItem().toString();
+
+if (codigo.isEmpty() || nombre.isEmpty() || categoria.isEmpty()
+        || precioTexto.isEmpty() || stockTexto.isEmpty()
+        || fechaVencimiento.isEmpty() || marca.isEmpty()) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Complete los datos antes de modificar.");
+    return;
+}
+
+Producto productoExistente = SistemaDatos.productoControlador.buscarPorCodigo(codigo);
+
+if (productoExistente == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró el producto para modificar.");
+    return;
+}
+
+if (!(productoExistente instanceof ProductoAbarrote)) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ese código pertenece a Librería, no puede modificarse aquí.");
+    return;
+}
+
+try {
+
+    double precio = Double.parseDouble(precioTexto);
+    int stock = Integer.parseInt(stockTexto);
+
+    if (precio <= 0 || stock < 0) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El precio debe ser mayor a 0 y el stock no puede ser negativo.");
+        return;
+    }
+
+    try {
+        java.time.LocalDate.parse(fechaVencimiento);
+    } catch (java.time.format.DateTimeParseException e) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "La fecha debe tener este formato: 2026-06-05");
+        return;
+    }
+
+    ProductoAbarrote productoActualizado = new ProductoAbarrote(
+            codigo,
+            nombre,
+            categoria,
+            precio,
+            stock,
+            fechaVencimiento,
+            marca,
+            unidadMedida
+    );
+
+    boolean modificado = SistemaDatos.productoControlador.modificarProducto(
+            codigo,
+            productoActualizado
+    );
+
+    if (modificado) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Producto modificado correctamente.");
+
+        actualizarTablaAbarrotes();
+        limpiarCamposAbarrote();
+        SistemaDatos.guardarDatos();
+    }
+
+} catch (NumberFormatException e) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese precio y stock con valores numéricos.");
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarAbarroteActionPerformed
+
+    private void btnEliminarAbarroteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAbarroteActionPerformed
+String codigo = txtCodigoAbarrote.getText().trim();
+
+if (codigo.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese el código del producto a eliminar.");
+    return;
+}
+
+Producto producto = SistemaDatos.productoControlador.buscarPorCodigo(codigo);
+
+if (producto == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró el producto.");
+    return;
+}
+
+if (!(producto instanceof ProductoAbarrote)) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Este producto no pertenece a Minimarket.");
+    return;
+}
+
+int opcion = javax.swing.JOptionPane.showConfirmDialog(this,
+        "¿Desea eliminar este producto?",
+        "Confirmar eliminación",
+        javax.swing.JOptionPane.YES_NO_OPTION);
+
+if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+
+    boolean eliminado = SistemaDatos.productoControlador.eliminarProducto(codigo);
+
+    if (eliminado) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Producto eliminado correctamente.");
+
+        actualizarTablaAbarrotes();
+        limpiarCamposAbarrote();
+        SistemaDatos.guardarDatos();
+    }
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarAbarroteActionPerformed
+
+    private void btnStockBajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStockBajoActionPerformed
+javax.swing.table.DefaultTableModel modelo =
+        (javax.swing.table.DefaultTableModel) tblAbarrotes.getModel();
+
+modelo.setRowCount(0);
+
+for (Producto p : SistemaDatos.productoControlador.obtenerStockBajo()) {
+
+    if (p instanceof ProductoAbarrote) {
+
+        ProductoAbarrote a = (ProductoAbarrote) p;
+
+        modelo.addRow(new Object[]{
+            a.getCodigo(),
+            a.getNombre(),
+            a.getCategoria(),
+            a.getPrecio(),
+            a.getStock(),
+            a.getFechaVencimiento(),
+            a.getMarca(),
+            a.getUnidadMedida()
+        });
+    }
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStockBajoActionPerformed
+
+    private void btnVerVencidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerVencidosActionPerformed
+javax.swing.table.DefaultTableModel modelo =
+        (javax.swing.table.DefaultTableModel) tblAbarrotes.getModel();
+
+modelo.setRowCount(0);
+
+for (ProductoAbarrote a : SistemaDatos.productoControlador.obtenerProductosVencidos()) {
+
+    modelo.addRow(new Object[]{
+        a.getCodigo(),
+        a.getNombre(),
+        a.getCategoria(),
+        a.getPrecio(),
+        a.getStock(),
+        a.getFechaVencimiento(),
+        a.getMarca(),
+        a.getUnidadMedida()
+    });
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerVencidosActionPerformed
+
+    private void btnGuardarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarUsuarioActionPerformed
+String id = txtIdUsuario.getText().trim();
+String nombres = txtNombresUsuario.getText().trim();
+String usuario = txtUsuarioRegistro.getText().trim();
+String contrasenia = txtContraseniaUsuario.getText().trim();
+String rol = cmbRolUsuario.getSelectedItem().toString();
+
+if (id.isEmpty() || nombres.isEmpty() || usuario.isEmpty() || contrasenia.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Complete todos los datos del usuario.");
+    return;
+}
+
+if (!rol.equalsIgnoreCase("Administrador") && !rol.equalsIgnoreCase("Cajero")) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "El rol solo puede ser Administrador o Cajero.");
+    return;
+}
+
+Usuario nuevoUsuario = new Usuario(id, nombres, usuario, contrasenia, rol);
+
+boolean registrado = SistemaDatos.usuarioControlador.agregarUsuario(nuevoUsuario);
+
+if (registrado) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Usuario registrado correctamente.");
+
+    actualizarTablaUsuarios();
+    limpiarCamposUsuario();
+    SistemaDatos.guardarDatos();
+
+} else {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ya existe un usuario con ese ID o nombre de usuario.");
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarUsuarioActionPerformed
+
+    private void btnBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarUsuarioActionPerformed
+String id = txtIdUsuario.getText().trim();
+String usuarioTexto = txtUsuarioRegistro.getText().trim();
+
+Usuario usuarioEncontrado = null;
+
+if (!id.isEmpty()) {
+    usuarioEncontrado = SistemaDatos.usuarioControlador.buscarPorId(id);
+} else if (!usuarioTexto.isEmpty()) {
+    usuarioEncontrado = SistemaDatos.usuarioControlador.buscarPorUsuario(usuarioTexto);
+} else {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese el ID o el usuario a buscar.");
+    return;
+}
+
+if (usuarioEncontrado == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró el usuario.");
+    return;
+}
+
+cargarUsuarioEnFormulario(usuarioEncontrado);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarUsuarioActionPerformed
+
+    private void btnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarUsuarioActionPerformed
+String id = txtIdUsuario.getText().trim();
+String nombres = txtNombresUsuario.getText().trim();
+String usuario = txtUsuarioRegistro.getText().trim();
+String contrasenia = txtContraseniaUsuario.getText().trim();
+String rol = cmbRolUsuario.getSelectedItem().toString();
+
+if (id.isEmpty() || nombres.isEmpty() || usuario.isEmpty() || contrasenia.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Complete todos los datos antes de modificar.");
+    return;
+}
+
+Usuario existente = SistemaDatos.usuarioControlador.buscarPorId(id);
+
+if (existente == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró el usuario para modificar.");
+    return;
+}
+
+Usuario usuarioRepetido = SistemaDatos.usuarioControlador.buscarPorUsuario(usuario);
+
+if (usuarioRepetido != null && !usuarioRepetido.getIdUsuario().equalsIgnoreCase(id)) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ese nombre de usuario ya está siendo usado.");
+    return;
+}
+
+boolean modificado = SistemaDatos.usuarioControlador.modificarUsuario(
+        id,
+        nombres,
+        usuario,
+        contrasenia,
+        rol
+);
+
+if (modificado) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Usuario modificado correctamente.");
+
+    actualizarTablaUsuarios();
+    limpiarCamposUsuario();
+    SistemaDatos.guardarDatos();
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarUsuarioActionPerformed
+
+    private void btnDarBajaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaUsuarioActionPerformed
+String id = txtIdUsuario.getText().trim();
+
+if (id.isEmpty()) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Ingrese el ID del usuario.");
+    return;
+}
+
+Usuario usuarioEncontrado = SistemaDatos.usuarioControlador.buscarPorId(id);
+
+if (usuarioEncontrado == null) {
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No se encontró el usuario.");
+    return;
+}
+
+if (SistemaDatos.usuarioActivo != null
+        && SistemaDatos.usuarioActivo.getIdUsuario().equalsIgnoreCase(id)) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "No puedes dar de baja al usuario que está usando el sistema.");
+    return;
+}
+
+int opcion = javax.swing.JOptionPane.showConfirmDialog(this,
+        "¿Desea dar de baja a este usuario?",
+        "Confirmar baja",
+        javax.swing.JOptionPane.YES_NO_OPTION);
+
+if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+
+    boolean dadoDeBaja = SistemaDatos.usuarioControlador.darBajaUsuario(id);
+
+    if (dadoDeBaja) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Usuario dado de baja correctamente.");
+
+        actualizarTablaUsuarios();
+        limpiarCamposUsuario();
+        SistemaDatos.guardarDatos();
+    }
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDarBajaUsuarioActionPerformed
+
+    private void btnLimpiarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarUsuarioActionPerformed
+limpiarCamposUsuario();
+actualizarTablaUsuarios();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
