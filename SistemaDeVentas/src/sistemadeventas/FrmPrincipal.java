@@ -340,7 +340,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                                     .addComponent(lblCierreEsperado)
                                     .addComponent(lblSaldoActual)
                                     .addComponent(jLabel1))))
-                        .addContainerGap(138, Short.MAX_VALUE))))
+                        .addContainerGap(159, Short.MAX_VALUE))))
         );
         panelCajaLayout.setVerticalGroup(
             panelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +381,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                 .addGroup(panelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextoCierreEsperado)
                     .addComponent(lblCierreEsperado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelCajaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextoIngresos)
                     .addComponent(jLabel1))
@@ -478,7 +478,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                                 .addComponent(btnLimpiarCliente)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(scrollClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(scrollClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -514,7 +514,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                     .addComponent(btnLimpiarCliente))
                 .addGap(3, 3, 3)
                 .addComponent(scrollClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         panelClientes.addTab("Clientes", jPanel3);
@@ -686,11 +686,11 @@ public class FrmPrincipal extends javax.swing.JPanel {
         panelReportes.setLayout(panelReportesLayout);
         panelReportesLayout.setHorizontalGroup(
             panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 487, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
         panelReportesLayout.setVerticalGroup(
             panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 705, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
         panelClientes.addTab("Reportes", panelReportes);
@@ -806,7 +806,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                     .addComponent(lblRolUsuarioRegistro)
                     .addComponent(cmbRolUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(panelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificarUsuario)
@@ -889,6 +889,9 @@ public class FrmPrincipal extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMinimarketLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panelMinimarketLayout.createSequentialGroup()
                         .addGroup(panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTituloMinimarket, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelMinimarketLayout.createSequentialGroup()
@@ -916,21 +919,23 @@ public class FrmPrincipal extends javax.swing.JPanel {
                                     .addComponent(cmbUnidadMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelMinimarketLayout.createSequentialGroup()
-                        .addComponent(btnGuardarAbarrote)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificarAbarrote)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarAbarrote)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscarAbarrote)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnStockBajo))
-                    .addGroup(panelMinimarketLayout.createSequentialGroup()
-                        .addComponent(btnVerVencidos)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnLimpiarAbarrote))))
+                        .addGroup(panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMinimarketLayout.createSequentialGroup()
+                                .addComponent(btnGuardarAbarrote)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificarAbarrote)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminarAbarrote)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscarAbarrote)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnStockBajo))
+                            .addGroup(panelMinimarketLayout.createSequentialGroup()
+                                .addComponent(btnVerVencidos)
+                                .addGap(44, 44, 44)
+                                .addComponent(btnLimpiarAbarrote)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         panelMinimarketLayout.setVerticalGroup(
             panelMinimarketLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1161,7 +1166,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                                 .addComponent(btnGenerarComprobante)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelarVenta)))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelVentasLayout.setVerticalGroup(
             panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1235,7 +1240,7 @@ public class FrmPrincipal extends javax.swing.JPanel {
                 .addGroup(panelVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerarComprobante)
                     .addComponent(btnCancelarVenta))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelClientes.addTab("Ventas", panelVentas);
@@ -1247,13 +1252,15 @@ public class FrmPrincipal extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTituloSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTituloSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(panelSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
-                        .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                        .addComponent(panelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
